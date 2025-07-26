@@ -8,8 +8,7 @@ namespace CadastroDeEmpresa.Models
         public string Nome { get; set; } = string.Empty;
         public String Email { get; set; } = string.Empty;
         public string SenhaHash { get; set; } = string.Empty;
-
-        //public List<Empresa> Empresas { get; set; } = new ();
+        public List<Empresa> Empresas { get; set; } = new ();
 
     }
 }

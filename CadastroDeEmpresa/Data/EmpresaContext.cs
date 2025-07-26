@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using CadastroDeEmpresa.Models;
 
 namespace CadastroDeEmpresa.Data
 {
@@ -10,5 +11,6 @@ namespace CadastroDeEmpresa.Data
         }
 
         public DbSet<Usuario> Usuarios { get; set; } = null!;
+        public DbSet<Empresa> Empresas { get; set; } = null!;
     }
 }

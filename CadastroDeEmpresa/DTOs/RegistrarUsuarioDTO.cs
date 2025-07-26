@@ -1,6 +1,6 @@
 ﻿namespace CadastroDeEmpresa.DTOs
 {
-    public class RegisterUsuarioDTO
+    public class RegistrarUsuarioDTO
     {
         public string Nome { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;

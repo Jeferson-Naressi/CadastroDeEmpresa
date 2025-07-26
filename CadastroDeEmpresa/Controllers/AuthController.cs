@@ -28,7 +28,7 @@ namespace CadastroDeEmpresa.Controllers
 
         // Rota: POST /api/auth/registrar
         [HttpPost("registrar")]
-        public async Task<IActionResult> Registrar(RegisterUsuarioDTO dto)
+        public async Task<IActionResult> Registrar(RegistrarUsuarioDTO dto)
         {
             // Verifica se o e-mail já está cadastrado
             var existe = await _context.Usuarios.AnyAsync(u => u.Email == dto.Email);
