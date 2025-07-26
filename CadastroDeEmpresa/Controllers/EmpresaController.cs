@@ -15,8 +15,13 @@ namespace CadastroDeEmpresa.Controllers
     public class EmpresaController : ControllerBase
     {
         private readonly EmpresaContext _context;
-        private readonly ReceitaWsServico _receitaServico;
+        private readonly ReceitaWsServico _receitaServico; 
 
+        public EmpresaController(EmpresaContext context, ReceitaWsServico receitaWsServico)
+        {
+            _context = context;
+            _receitaServico = receitaWsServico;
+        }
         private string ObterCampoObrigatorio(JsonElement root, string nomeCampo)
         {
             if (!root.TryGetProperty(nomeCampo, out var elemento) || string.IsNullOrWhiteSpace(elemento.GetString()))
@@ -25,11 +30,6 @@ namespace CadastroDeEmpresa.Controllers
             }
 
             return elemento.GetString()!;
-        }
-        public EmpresaController(EmpresaContext context, ReceitaWsServico receitaWsServico)
-        {
-            _context = context;
-            _receitaServico = receitaWsServico;
         }
 
         [HttpPost]
