@@ -22,6 +22,7 @@ namespace Application.Services
         }
 
         public async Task<string> UserRegister(RegisterUserDTO registrarUsuarioDTO)
+
         {
             // Verifica se o e-mail já está cadastrado
             var exists = await _authRepository.UserExistsAsync(registrarUsuarioDTO.Email);

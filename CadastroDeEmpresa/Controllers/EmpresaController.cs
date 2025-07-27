@@ -1,7 +1,7 @@
 ﻿using CadastroDeEmpresa.Data;
 using CadastroDeEmpresa.DTOs;
 using CadastroDeEmpresa.Models;
-using CadastroDeEmpresa.Servicos ;
+using CadastroDeEmpresa.Servicos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -22,6 +22,7 @@ namespace CadastroDeEmpresa.Controllers
             _context = context;
             _receitaServico = receitaWsServico;
         }
+
         private string ObterCampoObrigatorio(JsonElement root, string nomeCampo)
         {
             if (!root.TryGetProperty(nomeCampo, out var elemento) || string.IsNullOrWhiteSpace(elemento.GetString()))

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CadastroDeEmpresa.Models;
+﻿using CadastroDeEmpresa.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CadastroDeEmpresa.Data
 {

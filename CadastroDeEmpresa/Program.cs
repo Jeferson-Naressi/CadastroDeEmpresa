@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;      
 using CadastroDeEmpresa.Servicos;
+using Application.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddHttpClient<ReceitaWsService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddProjectServices();
+builder.Services.AddProjectRepositories();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<EmpresaContext>(options =>
