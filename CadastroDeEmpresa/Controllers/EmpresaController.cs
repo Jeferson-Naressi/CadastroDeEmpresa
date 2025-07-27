@@ -15,9 +15,9 @@ namespace CadastroDeEmpresa.Controllers
     public class EmpresaController : ControllerBase
     {
         private readonly EmpresaContext _context;
-        private readonly ReceitaWsServico _receitaServico; 
+        private readonly ReceitaWsService _receitaServico; 
 
-        public EmpresaController(EmpresaContext context, ReceitaWsServico receitaWsServico)
+        public EmpresaController(EmpresaContext context, ReceitaWsService receitaWsServico)
         {
             _context = context;
             _receitaServico = receitaWsServico;
@@ -34,7 +34,7 @@ namespace CadastroDeEmpresa.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> CadastrarEmpresa([FromBody] CadastrarEmpresaDTO dto)
+        public async Task<IActionResult> CadastrarEmpresa([FromBody] RegisterCompanyDTO dto)
         {
             try
             {

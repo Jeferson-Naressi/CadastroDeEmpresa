@@ -1,16 +1,13 @@
-﻿using CadastroDeEmpresa.Models;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 
 namespace CadastroDeEmpresa.Servicos
 
 {
-    public class ReceitaWsServico
+    public class ReceitaWsService
     {
         private readonly HttpClient _httpClient;
-        public ReceitaWsServico(HttpClient httpClient)
+        public ReceitaWsService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
