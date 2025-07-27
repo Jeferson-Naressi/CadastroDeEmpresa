@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.Services
 {
-    public interface IAuthService
+    public interface ICompanyService
     {
+        public Task<string> UserRegister(RegisterCompanyDTO registerCompanyDTO);
 
-        public Task<string> UserRegister(RegisterUserDTO registrarUsuarioDTO);
-
-
-        public Task<string> UserLogin(LoginUsuarioDTO loginUsuarioDTO);
+        public Task<List<RegisterCompanyDTO>> ListUserCompanies(Guid usuarioId);
     }
 }

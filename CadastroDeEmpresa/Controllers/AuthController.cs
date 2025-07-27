@@ -20,7 +20,7 @@ namespace CadastroDeEmpresa.Controllers
 
         // Rota: POST /api/auth/registrar
         [HttpPost("registrar")]
-        public async Task<IActionResult> Registrar(RegistrarUsuarioDTO dto)
+        public async Task<IActionResult> Registrar(RegisterUserDTO dto)
         {
             var response = await _authservice.UserRegister(dto);
 
