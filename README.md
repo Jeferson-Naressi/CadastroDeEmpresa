@@ -46,7 +46,7 @@ A solução está organizada nas seguintes camadas:
 - SQL Server
 - JWT (Json Web Token)
 - BCrypt.Net
-- Swagger
+- Postman
 - FluentValidation
 - ReceitaWS API
 
