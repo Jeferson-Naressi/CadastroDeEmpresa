@@ -1,6 +1,6 @@
 # Cadastro de Empresas com Autenticação e Consulta via CNPJ (ReceitaWS)
 
-Este projeto é uma API desenvolvida em ASP.NET Core com foco em boas práticas de arquitetura e organização de código, permitindo o **cadastro e autenticação de usuários**, bem como o **cadastro de empresas por meio da consulta ao CNPJ** utilizando a API pública da ReceitaWS.
+Este projeto é uma API desenvolvida em ASP.NET Core com foco em boas práticas de arquitetura em camadas e organização de código, permitindo o **cadastro e autenticação de usuários**, bem como o **cadastro de empresas por meio da consulta ao CNPJ** utilizando a API pública da ReceitaWS.
 
 ---
 
@@ -49,18 +49,55 @@ A solução está organizada nas seguintes camadas:
 - Postman
 - FluentValidation
 - ReceitaWS API
-
+- Camadas: WebAPI, Application, Business, Infrastructure
+- 
 ---
 
 ## 🚀 Como rodar o projeto
 
-1. Clone o repositório
-2. Configure a connection string no `appsettings.json`
-3. Rode as migrations com `Update-Database`
-4. Execute o projeto via Visual Studio
-5. Use o Postman para testar as rotas
+### Pré-requisitos
+- [.NET 8 SDK](https://dotnet.microsoft.com/download)
+- SQL Server (localdb, express ou outro)
+- Conta gratuita em [ReceitaWS](https://www.receitaws.com.br/)
 
+### Etapas
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/CadastroDeEmpresa.git
+   ```
+
+2. Configure o `appsettings.json`:
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=CadastroDeEmpresa;Trusted_Connection=True;"
+     },
+     "Jwt": {
+       "Key": "sua-chave-secreta-jwt",
+       "Issuer": "CadastroEmpresaAPI",
+       "Audience": "CadastroEmpresaAPI"
+     },
+     "ReceitaWS": {
+       "Token": "seu-token-da-receita-aqui"
+     }
+   }
+   ```
+
+3. Execute os comandos:
+   ```bash
+   dotnet ef database update
+   dotnet run --project WebAPI
 ---
+
+## 🚀 Funcionalidades no Postman
+
+- `POST /api/auth/register` → Registro de usuário
+- `POST /api/auth/login` → Login e geração de token JWT
+- `GET /api/usuario/authenticate` → Validação do token e exibição dos dados do usuário
+- `POST /api/company/register` → Cadastro de empresa por CNPJ
+- `GET /api/company/list` → Listagem das empresas do usuário autenticado
+
 
 ## 📎 Observações
 
