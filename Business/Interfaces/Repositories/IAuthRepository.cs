@@ -1,11 +1,11 @@
-﻿using CadastroDeEmpresa.Models;
+﻿using Business.Models;
 
-namespace Business.Interfaces.Repository
+namespace Business.Interfaces.Repositories
 {
     public interface IAuthRepository
     {
         public Task<bool> UserExistsAsync(string email);
-        public Task SaveUserAsync(Usuario usuario);
-        public Task<Usuario> GetUserFindByEmail(string email);
+        public Task SaveUserAsync(User user);
+        public Task<User> GetUserFindByEmail(string email);
     }
 }

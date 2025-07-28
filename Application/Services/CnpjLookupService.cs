@@ -1,15 +1,19 @@
 ﻿using System.Text.Json;
 
 
-namespace CadastroDeEmpresa.Servicos
+namespace Application.Services
 
 {
-    public class ReceitaWsServico
+    public class CnpjLookupService
     {
         private readonly HttpClient _httpClient;
-        public ReceitaWsServico(HttpClient httpClient)
+        public CnpjLookupService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+        }
+        public interface ICnpjLookupService
+        {
+            Task<JsonDocument?> ConsultCnpjAsync(string cnpj);
         }
 
         public async Task<JsonDocument?> ConsultarCnpjAsync(string cnpj)

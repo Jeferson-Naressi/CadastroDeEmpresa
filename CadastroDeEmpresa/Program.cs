@@ -1,26 +1,26 @@
-using CadastroDeEmpresa.Data;
+using Infrastructure.Data;
+using Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;      
-using CadastroDeEmpresa.Servicos;
+using System.Text;
+using Application.Services;
 using Application.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-builder.Services.AddHttpClient<ReceitaWsServico>();
+builder.Services.AddHttpClient<CnpjLookupService>();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureRepositories();
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddProjectServices();
-builder.Services.AddProjectRepositories();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<EmpresaContext>(options =>
+builder.Services.AddDbContext<CompanyContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -41,20 +41,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseAuthentication(); // Verifica se o token JWT está presente e válido
-    app.UseAuthorization();  // Verifica se o usuário autenticado tem permissão para acessar
-
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

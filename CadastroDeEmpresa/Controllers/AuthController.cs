@@ -1,35 +1,32 @@
 ﻿using Business.Interfaces.Services;
-using CadastroDeEmpresa.Data;
-using CadastroDeEmpresa.DTOs;
+using Infrastructure.Data;
+using Business.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace CadastroDeEmpresa.Controllers
+namespace WebAPI.Controllers
 {
-    [ApiController] // Indica que esse é um controller de API
-    [Route("api/[controller]")] // Define a rota base: /api/auth
+    [ApiController] 
+    [Route("api/[controller]")] 
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authservice;
 
-        // Construtor com injeção de dependência
         public AuthController(IAuthService authService)
         {
             _authservice = authService;
         }
 
-        // Rota: POST /api/auth/registrar
         [HttpPost("registrar")]
-        public async Task<IActionResult> Registrar(RegistrarUsuarioDTO dto)
+        public async Task<IActionResult> Registrar(RegisterUserDTO dto)
         {
             var response = await _authservice.UserRegister(dto);
 
             return Ok(response);
         }
 
-        // Rota: POST /api/auth/login
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginUsuarioDTO dto)
+        public async Task<IActionResult> Login(LoginUserDTO dto)
         {
             var response = await _authservice.UserLogin(dto);
 
