@@ -1,7 +1,13 @@
-﻿namespace CadastroDeEmpresa.DTOs
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Business.DTOs
 {
     public class RegisterCompanyDTO
     {
-        public string Cnpj { get; set; } = string.Empty;
+        public string CNPJ { get; set; } = string.Empty;
     }
 }

@@ -1,4 +1,4 @@
-﻿using CadastroDeEmpresa.DTOs;
+﻿using Business.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,8 @@ namespace Business.Interfaces.Services
 {
     public interface IAuthService
     {
-
         public Task<string> UserRegister(RegisterUserDTO registrarUsuarioDTO);
 
-
-        public Task<string> UserLogin(LoginUsuarioDTO loginUsuarioDTO);
+        public Task<string> UserLogin(LoginUserDTO loginUsuarioDTO);
     }
 }

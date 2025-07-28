@@ -1,4 +1,4 @@
-﻿namespace CadastroDeEmpresa.DTOs
+﻿namespace WebAPI.DTOs
 {
     public class CadastrarEmpresaDTO
     {

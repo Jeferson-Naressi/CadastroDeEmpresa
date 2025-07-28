@@ -6,9 +6,10 @@ namespace Application.Configurations
 {
     public static class DependencyInjectionConfiguration
     {
-        public static IServiceCollection AddProjectServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ICompanyService, CompanyService>();
 
             return services;
         }
