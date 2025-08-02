@@ -1,36 +1,30 @@
-﻿using Business.Interfaces.Services;
-using Infrastructure.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 using Business.DTOs;
-using Microsoft.AspNetCore.Mvc;
 
 
 namespace WebAPI.Controllers
 {
-    [ApiController] 
-    [Route("api/[controller]")] 
-    public class AuthController : ControllerBase
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UsuarioController : ControllerBase
     {
-        private readonly IAuthService _authservice;
-
-        public AuthController(IAuthService authService)
+        [HttpGet("Authenticate")]
+        [Authorize]
+        public IActionResult GetMe()
         {
-            _authservice = authService;
-        }
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var name = User.FindFirstValue(ClaimTypes.Name);
+            var email = User.FindFirstValue(ClaimTypes.Email);
 
-        [HttpPost("registrar")]
-        public async Task<IActionResult> Registrar(RegisterUserDTO dto)
-        {
-            var response = await _authservice.UserRegister(dto);
-
-            return Ok(response);
-        }
-
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginUserDTO dto)
-        {
-            var response = await _authservice.UserLogin(dto);
-
-            return Ok(response);
+            return Ok(new
+            {
+                Mensagem = "Token válido!",
+                UserId = userId,
+                Name = name,
+                Email = email
+            });
         }
     }
 }
