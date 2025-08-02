@@ -8,8 +8,8 @@ namespace Application.Services
 {
     public class CompanyService : ICompanyService
     {
-        private readonly ICompanyRepository _companyRepository; // Listar
-        private readonly CnpjLookupService _cnpjLookupService; // Consultar
+        private readonly ICompanyRepository _companyRepository; 
+        private readonly CnpjLookupService _cnpjLookupService; 
 
         public CompanyService(ICompanyRepository companyRepository, CnpjLookupService cnpjLookupService)
         {

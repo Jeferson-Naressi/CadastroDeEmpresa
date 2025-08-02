@@ -30,7 +30,11 @@ namespace WebAPI.Controllers
         {
             var response = await _authservice.UserLogin(dto);
 
-            return Ok(response);
+            return Ok (new
+            {
+                Token = response,
+            }
+            );
         }
     }
 }

@@ -8,7 +8,7 @@ namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsuarioController : ControllerBase
+    public class AuthController : ControllerBase
     {
         [HttpGet("Authenticate")]
         [Authorize]
