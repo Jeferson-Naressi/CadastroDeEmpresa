@@ -92,11 +92,11 @@ A solução está organizada nas seguintes camadas:
 
 ## 🚀 Funcionalidades no Postman
 
-- `POST /api/auth/register` → Registro de usuário
-- `POST /api/auth/login` → Login e geração de token JWT
-- `GET /api/usuario/authenticate` → Validação do token e exibição dos dados do usuário
-- `POST /api/company/register` → Cadastro de empresa por CNPJ
-- `GET /api/company/list` → Listagem das empresas do usuário autenticado
+- `POST /api/User/Register` → Registro de usuário
+- `POST /api/User/login` → Login e geração de token JWT
+- `GET /api/Auth/Authenticate` → Validação do token e exibição dos dados do usuário
+- `POST /api/Company/Register` → Cadastro de empresa por CNPJ
+- `GET /api/Company/List` → Listagem das empresas do usuário autenticado
 
 
 ## 📎 Observações
